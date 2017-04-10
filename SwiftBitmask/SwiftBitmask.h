@@ -6,7 +6,7 @@
 //  Copyright (c) 2014 bryn austin bellomy. All rights reserved.
 //
 
-#import <Cocoa/Cocoa.h>
+#import <Foundation/Foundation.h>
 
 //! Project version number for SwiftBitmask.
 FOUNDATION_EXPORT double SwiftBitmaskVersionNumber;
