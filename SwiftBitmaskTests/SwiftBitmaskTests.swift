@@ -107,6 +107,49 @@ class SwiftBitmaskTests: XCTestCase
         XCTAssert(bitmask ~= |MonsterAttributes.scary)
         XCTAssertFalse(bitmask ~= |MonsterAttributes.big)
     }
+    func testPatternMatchingOperatorReversed() {
+        XCTAssertFalse(MonsterAttributes.scary | .big ~= bitmask)
+        XCTAssertFalse(MonsterAttributes.scary ~= bitmask)
+        XCTAssertFalse(|MonsterAttributes.scary ~= bitmask)
+        XCTAssertFalse(|MonsterAttributes.big ~= bitmask)
+    }
+
+    func testSwitchCasePatternMatching() {
+        switch MonsterAttributes.scary | .big {
+            case bitmask: XCTFail()
+            default: break
+        }
+        switch MonsterAttributes.scary {
+            case bitmask: break
+            default: XCTFail()
+        }
+        switch |MonsterAttributes.scary {
+            case bitmask: break
+            default: XCTFail()
+        }
+        switch |MonsterAttributes.big {
+            case bitmask: XCTFail()
+            default: break
+        }
+    }
+    func testSwitchCasePatternMatchingReversed() {
+        switch bitmask {
+            case MonsterAttributes.scary | .big: XCTFail()
+            default: break
+        }
+        switch bitmask {
+            case MonsterAttributes.scary: XCTFail()
+            default: break
+        }
+        switch bitmask {
+            case |MonsterAttributes.scary: XCTFail()
+            default: break
+        }
+        switch bitmask {
+            case |MonsterAttributes.big: XCTFail()
+            default: break
+        }
+    }
 }
 
 
