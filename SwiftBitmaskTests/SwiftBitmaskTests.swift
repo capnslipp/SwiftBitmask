@@ -102,10 +102,10 @@ class SwiftBitmaskTests: XCTestCase
 
     func testPatternMatchingOperator() {
         // Implements the pattern matching operator
-        XCTAssert(bitmask ~=  MonsterAttributes.scary | .big)
+        XCTAssertFalse(bitmask ~= MonsterAttributes.scary | .big)
         XCTAssert(bitmask ~=  MonsterAttributes.scary)
         XCTAssert(bitmask ~= |MonsterAttributes.scary)
-        XCTAssert((bitmask ~= |MonsterAttributes.big) == false)
+        XCTAssertFalse(bitmask ~= |MonsterAttributes.big)
     }
 }
 

@@ -210,9 +210,9 @@ public prefix func ~ <T: IBitmaskRepresentable> (value:T)          -> Bitmask<T>
 // MARK: - Pattern matching operator
 //
 
-public func ~=<T: IBitmaskRepresentable> (pattern: Bitmask<T>, value: Bitmask<T>) -> Bool { return (pattern & value).boolValue }
-public func ~=<T: IBitmaskRepresentable> (pattern: Bitmask<T>, value: T) -> Bool          { return (pattern & value).boolValue }
-public func ~=<T: IBitmaskRepresentable> (pattern: T, value: Bitmask<T>) -> Bool          { return (pattern & value).boolValue }
+public func ~=<T: IBitmaskRepresentable> (pattern: Bitmask<T>, value: Bitmask<T>) -> Bool { return (pattern & value) == value }
+public func ~=<T: IBitmaskRepresentable> (pattern: Bitmask<T>, value: T) -> Bool          { return (pattern & value) == value }
+public func ~=<T: IBitmaskRepresentable> (pattern: T, value: Bitmask<T>) -> Bool          { return (pattern & value) == value }
 
 
 
